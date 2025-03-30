@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Solutions | Advanced Data Services</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet" />
+ <!-- Load Nippo, Array, and Kola from Fontshare -->
+<link href="https://api.fontshare.com/v2/css?f[]=nippo@700,400&f[]=array@700,400&f[]=kola@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        /* Light Theme */
+        --primary-light: #F8F9FA;
+        --secondary-light: #E9ECEF;
+        --accent-light: #FF6B35;
+        --text-light: #212529;
+        --text-light-secondary: #495057;
+        
+        /* Dark Theme (Default) */
+        --primary-dark: #121212;
+        --secondary-dark: #1E1E1E;
+        --accent-dark: #FF9E3D;
+        --text-dark: #F8F9FA;
+        --text-dark-secondary: #ADB5BD;
+        
+        /* Default to dark */
+        --primary: var(--primary-dark);
+        --secondary: var(--secondary-dark);
+        --accent: var(--accent-dark);
+        --text: var(--text-dark);
+        --text-light: var(--text-dark-secondary);
+      }
+      
+      body.light-theme {
+        --primary: var(--primary-light);
+        --secondary: var(--secondary-light);
+        --accent: var(--accent-light);
+        --text: var(--text-light);
+        --text-light: var(--text-light-secondary);
+      }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body {
+            transition: background-color 0.5s ease, color 0.3s ease;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text);
+            background-color: var(--primary);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Kola', sans-serif;
+            font-weight: 700;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Doto', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 600px;;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: var(--text-light);
+            font-weight: 600;
+
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent);
+            color: #000;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-code {
+            position: absolute;
+            right: 50px;
+            bottom: 50px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            color: #00FF00;
+            font-family: monospace;
+            max-width: 400px;
+            overflow: hidden;
+            z-index: 2;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: var(--primary);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--secondary);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 50px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            padding: 100px 0;
+            background-color: var(--secondary);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-overlay h3 {
+            color: #FFF;
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-overlay p {
+            color: #DDD;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: var(--primary);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+        
+        .skills {
+            margin-top: 30px;
+        }
+        
+        .skill-item {
+            margin-bottom: 15px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background-color: #EEE;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background-color: var(--accent);
+            border-radius: 5px;
+        }
+        
+        .about-image {
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--secondary);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 30px;
+            color: var(--text-light);
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-detail i {
+            font-size: 20px;
+            color: var(--accent);
+            margin-right: 15px;
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #DDD;
+            border-radius: 5px;
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--primary);
+            color: var(--text);
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: var(--text);
+            font-size: 20px;
+            transition: color 0.3s, transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-text {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+        
+        /* Cursor Effect */
+        .cursor-effect {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(212, 175, 55, 0.5);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            mix-blend-mode: multiply;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero-code {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+
+        .specialties {
+            padding: 100px 0;
+            background-color: var(--primary);
+          }
+          .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+          }
+          .specialty-card {
+            background-color: var(--secondary);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+          }
+          .specialty-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+          }
+          .specialty-icon {
+            font-size: 50px;
+            color: var(--accent);
+            margin-bottom: 20px;
+          }
+          .specialty-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+          }
+          .specialty-card p {
+            color: var(--text-light);
+            font-size: 16px;
+          }
+          @media (max-width: 1200px) {
+            .specialties-grid {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+          @media (max-width: 768px) {
+            .specialties-grid {
+              grid-template-columns: 1fr;
+            }
+          }
+
+          .neural-canvas {
+            position: absolute;
+            top: -5%;
+            left: 0;
+            width: 110%;
+            height: 120%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.2;
+        }
+
+        
+        </style>
+</head>
+<body>
+    <div class="cursor-effect"></div>
+    
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo"><span style="color: var(--accent);">AiSol</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+    
+    <section class="hero" id="home">
+        <canvas id="neuralCanvas" class="neural-canvas"></canvas>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transforming Data Into Intelligent Solutions</h1>
+                <p>We specialize in advanced AI services including data analytics, machine learning models, and intelligent automation to drive your business forward.</p>
+                <a href="#contact" class="btn">Get Started</a>
+            </div>
+            <div class="hero-code">
+                <div class="typing-text" id="typingText"></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="specialties" id="services">
+        <div class="container">
+          <div class="section-title">
+            <h2>What I Build</h2>
+          </div>
+          <div class="specialties-grid">
+            <div class="specialty-card">
+              <div class="specialty-icon">
+                <i class="fas fa-brain"></i>
+              </div>
+              <h3>Machine Learning</h3>
+              <p>I build models that learn from data and make predictions. From classification to time series forecasting.</p>
+            </div>
+            <div class="specialty-card">
+              <div class="specialty-icon">
+                <i class="fas fa-eye"></i>
+              </div>
+              <h3>Computer Vision</h3>
+              <p>Teaching machines to see: image classification, object detection, segmentation, OCR—you name it.</p>
+            </div>
+            <div class="specialty-card">
+              <div class="specialty-icon">
+                <i class="fas fa-comment-dots"></i>
+              </div>
+              <h3>Natural Language Processing</h3>
+              <p>I work with language models, chatbots, summarizers, and sentiment analysis systems.</p>
+            </div>
+            <div class="specialty-card">
+              <div class="specialty-icon">
+                <i class="fas fa-robot"></i>
+              </div>
+              <h3>Automation & Agents</h3>
+              <p>From autonomous bots to AI assistants—I automate processes and create agents that interact smartly.</p>
+            </div>
+            <div class="specialty-card">
+              <div class="specialty-icon">
+                <i class="fas fa-book"></i>
+              </div>
+              <h3>Learning Tools</h3>
+              <p>Language flashcards, spaced repetition systems, or interactive quiz bots—AI that helps you learn.</p>
+            </div>
+            <div class="specialty-card">
+              <div class="specialty-icon">
+                <i class="fas fa-broom"></i>
+              </div>
+              <h3>Data Wrangling</h3>
+              <p>Scraping, cleaning, transforming, and analyzing data. It all starts with good data.</p>
+            </div>
+            <div class="specialty-card">
+              <div class="specialty-icon">
+                <i class="fas fa-gamepad"></i>
+              </div>
+              <h3>Reinforcement Learning</h3>
+              <p>Building agents that learn through interaction—perfect for games and simulations.</p>
+            </div>
+            <div class="specialty-card">
+              <div class="specialty-icon">
+                <i class="fas fa-desktop"></i>
+              </div>
+              <h3>Interface Design</h3>
+              <p>I build clean, minimal interfaces to make complex AI tools usable and beautiful.</p>
+            </div>
+          </div>
+          <div class="specialty-card" style="margin-top: 60px; max-width: 600px; margin-left: auto; margin-right: auto;">
+            <div class="specialty-icon">
+              <i class="fas fa-flask"></i>
+            </div>
+            <h3>Experimentation</h3>
+            <p>Trying weird stuff just to see what happens — agents playing games, AI dungeon masters, generative art, and all kinds of fun explorations.</p>
+          </div>
+        </div>
+      </section>    
+    
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Work</h2>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://source.unsplash.com/random/600x400/?ai,technology,1" alt="AI Project 1">
+                    <div class="portfolio-overlay">
+                        <h3>Predictive Maintenance</h3>
+                        <p>Machine learning model to predict equipment failures before they occur.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://source.unsplash.com/random/600x400/?data,analysis,1" alt="AI Project 2">
+                    <div class="portfolio-overlay">
+                        <h3>Customer Segmentation</h3>
+                        <p>Clustering algorithm to identify distinct customer groups for targeted marketing.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://source.unsplash.com/random/600x400/?machine,learning,1" alt="AI Project 3">
+                    <div class="portfolio-overlay">
+                        <h3>Sentiment Analysis</h3>
+                        <p>NLP model to analyze customer feedback and social media sentiment.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://source.unsplash.com/random/600x400/?neural,network,1" alt="AI Project 4">
+                    <div class="portfolio-overlay">
+                        <h3>Image Recognition</h3>
+                        <p>Computer vision system for quality control in manufacturing.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://source.unsplash.com/random/600x400/?deep,learning,1" alt="AI Project 5">
+                    <div class="portfolio-overlay">
+                        <h3>Fraud Detection</h3>
+                        <p>Anomaly detection system for identifying fraudulent transactions.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://source.unsplash.com/random/600x400/?artificial,intelligence,1" alt="AI Project 6">
+                    <div class="portfolio-overlay">
+                        <h3>Chatbot System</h3>
+                        <p>AI-powered customer support chatbot with natural language understanding.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://source.unsplash.com/random/600x400/?data,science,1" alt="AI Project 7">
+                    <div class="portfolio-overlay">
+                        <h3>Recommendation Engine</h3>
+                        <p>Personalized content recommendation system for e-commerce.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://source.unsplash.com/random/600x400/?big,data,1" alt="AI Project 8">
+                    <div class="portfolio-overlay">
+                        <h3>Demand Forecasting</h3>
+                        <p>Time series analysis to predict product demand and optimize inventory.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://source.unsplash.com/random/600x400/?algorithm,1" alt="AI Project 9">
+                    <div class="portfolio-overlay">
+                        <h3>Autonomous Trading</h3>
+                        <p>Reinforcement learning system for algorithmic trading strategies.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://source.unsplash.com/random/600x400/?computer,vision,1" alt="AI Project 10">
+                    <div class="portfolio-overlay">
+                        <h3>Medical Diagnosis</h3>
+                        <p>AI assistant for preliminary medical image analysis and diagnosis.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://source.unsplash.com/random/600x400/?robotics,1" alt="AI Project 11">
+                    <div class="portfolio-overlay">
+                        <h3>Autonomous Navigation</h3>
+                        <p>Computer vision and path planning for robotic systems.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://source.unsplash.com/random/600x400/?voice,recognition,1" alt="AI Project 12">
+                    <div class="portfolio-overlay">
+                        <h3>Voice Assistant</h3>
+                        <p>Custom voice-controlled interface for smart home automation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Innovating with Artificial Intelligence</h2>
+                    <p>We are a team of passionate data scientists and AI engineers dedicated to solving complex business problems through cutting-edge artificial intelligence solutions.</p>
+                    <p>With expertise spanning machine learning, deep learning, and data engineering, we bridge the gap between theoretical AI and practical business applications.</p>
+                    <div class="skills">
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Machine Learning</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Data Analytics</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Deep Learning</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Natural Language Processing</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://source.unsplash.com/random/600x400/?team,office" alt="Our Team">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Discuss Your Project</h3>
+                    <p>Ready to leverage AI for your business? Contact us to schedule a consultation and discover how our solutions can drive your success.</p>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 AI Street, Tech City, TC 10101</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@aisolutions.example</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-medium"></i></a>
+            </div>
+            <p class="footer-text">&copy; 2023 AI Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Functionality
+        // Theme Toggle Functionality
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+const icon = themeToggle.querySelector('i');
+
+// Initialize theme from localStorage or prefer dark
+const savedTheme = localStorage.getItem('theme') || 
+                  (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+
+// Apply saved theme
+if (savedTheme === 'light') {
+  body.classList.add('light-theme');
+  icon.classList.replace('fa-moon', 'fa-sun');
+} else {
+  body.classList.remove('light-theme');
+  icon.classList.replace('fa-sun', 'fa-moon');
+}
+
+// Toggle function
+themeToggle.addEventListener('click', () => {
+  body.classList.toggle('light-theme');
+  
+  if (body.classList.contains('light-theme')) {
+    icon.classList.replace('fa-moon', 'fa-sun');
+    localStorage.setItem('theme', 'light');
+  } else {
+    icon.classList.replace('fa-sun', 'fa-moon');
+    localStorage.setItem('theme', 'dark');
+  }
+});
+        
+        // Typing Animation
+        const typingText = document.getElementById('typingText');
+        //const codeSnippets = [
+        //    "import tensorflow as tf\nmodel = tf.keras.Sequential([\n  tf.keras.layers.Dense(64, activation='relu'),\n  tf.keras.layers.Dense(10)\n])",
+        //    "from sklearn.ensemble import RandomForestClassifier\nclf = RandomForestClassifier()\nclf.fit(X_train, y_train)\npredictions = clf.predict(X_test)",
+        //    "import pandas as pd\ndata = pd.read_csv('dataset.csv')\nclean_data = data.dropna()\nfeatures = clean_data[['col1', 'col2']]",
+        //    "import numpy as np\nfrom scipy import stats\ndata = np.random.normal(0, 1, 1000)\nmean, std = np.mean(data), np.std(data)",
+        //    "import torch\nmodel = torch.nn.Sequential(\n  torch.nn.Linear(784, 256),\n  torch.nn.ReLU(),\n  torch.nn.Linear(256, 10)\n)"
+        //];
+        const codeSnippets = [
+    `import tensorflow as tf
+model = tf.keras.Sequential([
+  tf.keras.layers.Dense(128, activation='relu'),
+  tf.keras.layers.Dropout(0.2),
+  tf.keras.layers.Dense(64, activation='relu'),
+  tf.keras.layers.Dense(10, activation='softmax')
+])
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])`,
+
+    `from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+clf = RandomForestClassifier(n_estimators=100, max_depth=10)
+clf.fit(X_train, y_train)
+predictions = clf.predict(X_test)
+print("Accuracy:", accuracy_score(y_test, predictions))`,
+
+    `import pandas as pd
+data = pd.read_csv('dataset.csv')
+clean_data = data.dropna()
+features = clean_data[['col1', 'col2', 'col3']]
+labels = clean_data['target']
+summary = features.describe()
+print(summary.head())`,
+
+    `import numpy as np
+from scipy import stats
+data = np.random.normal(0, 1, 1000)
+mean = np.mean(data)
+std = np.std(data)
+z_scores = stats.zscore(data)
+outliers = data[np.abs(z_scores) > 3]
+print(f"Outliers found: {len(outliers)}")`,
+
+    `import torch
+import torch.nn as nn
+model = nn.Sequential(
+  nn.Linear(784, 256),
+  nn.ReLU(),
+  nn.Dropout(0.3),
+  nn.Linear(256, 128),
+  nn.ReLU(),
+  nn.Linear(128, 10),
+  nn.LogSoftmax(dim=1)
+)
+print(model)`
+];
+
+        
+        let currentSnippet = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isEnd = false;
+        
+        function type() {
+            const currentText = codeSnippets[currentSnippet];
+            
+            if (isDeleting) {
+                typingText.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                isEnd = true;
+                isDeleting = true;
+                setTimeout(type, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                currentSnippet = (currentSnippet + 1) % codeSnippets.length;
+                setTimeout(type, 500);
+            } else {
+                const speed = isDeleting ? 50 : 50;
+                setTimeout(type, speed);
+            }
+        }
+        
+        // Start typing animation
+        setTimeout(type, 1000);
+        
+        // Cursor Effect
+        const cursor = document.querySelector('.cursor-effect');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add shadow to header on scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                document.querySelector('header').style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                document.querySelector('header').style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+
+
+        const canvas = document.getElementById('neuralCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        
+        function resizeCanvas() {
+            width = canvas.width = canvas.offsetWidth;
+            height = canvas.height = canvas.offsetHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        
+        const layers = [3, 3, 5, 3];
+        const nodes = [];
+        const connections = [];
+        
+        function getColor(variable) {
+            return getComputedStyle(document.body).getPropertyValue(variable).trim();
+        }
+        
+        function hexToRgb(hex) {
+            hex = hex.replace('#', '');
+            const bigint = parseInt(hex, 16);
+            const r = (bigint >> 16) & 255;
+            const g = (bigint >> 8) & 255;
+            const b = bigint & 255;
+            return `${r},${g},${b}`;
+        }
+        
+        function createNetwork() {
+            nodes.length = 0;
+            connections.length = 0;
+        
+            const layerSpacing = width / (layers.length + 1);
+            layers.forEach((numNodes, i) => {
+                const layerX = (i + 1) * layerSpacing;
+                for (let j = 0; j < numNodes; j++) {
+                    const nodeY = (j + 1) * height / (numNodes + 1);
+                    nodes.push({ x: layerX, y: nodeY, layer: i });
+                }
+            });
+        
+            for (let i = 0; i < layers.length - 1; i++) {
+                const currentLayer = nodes.filter(n => n.layer === i);
+                const nextLayer = nodes.filter(n => n.layer === i + 1);
+                currentLayer.forEach(from => {
+                    nextLayer.forEach(to => {
+                        const shimmer = Math.random() < 0.4; // 40% chance to shimmer
+                        const phase = Math.random() * Math.PI * 2;
+                        connections.push({ from, to, shimmer, phase });
+                    });
+                });
+            }
+        }
+        createNetwork();
+        
+        function animate() {
+  ctx.clearRect(0, 0, width, height);
+  const accent = getColor('--accent');
+  const accentRGB = hexToRgb(accent);
+
+  // Glowing connections
+  connections.forEach(conn => {
+    const { from, to, shimmer, phase } = conn;
+    const t = shimmer ? (Math.sin(Date.now() / 800 + phase) + 1) / 2 : 0.3;
+    
+    ctx.beginPath();
+    ctx.strokeStyle = `rgba(${accentRGB}, ${0.2 + t * 0.8})`;
+    ctx.lineWidth = 2 + t * 3; // Pulsing width
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = `rgba(${accentRGB}, ${t * 0.5})`;
+    ctx.moveTo(from.x, from.y);
+    ctx.lineTo(to.x, to.y);
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+  });
+
+  // Nodes with glow
+  nodes.forEach(n => {
+    ctx.beginPath();
+    ctx.fillStyle = `rgba(${accentRGB}, 0.8)`;
+    ctx.arc(n.x, n.y, 10, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 15;
+    ctx.shadowColor = `rgba(${accentRGB}, 0.5)`;
+  });
+  requestAnimationFrame(animate);
+}
+        
+        animate();
+
+
+    </script>
+</body>
+</html>
