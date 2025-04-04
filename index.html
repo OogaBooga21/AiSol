@@ -298,6 +298,7 @@
             align-items: center;
             opacity: 0;
             transition: opacity 0.3s;
+            z-index:2;
         }
         
         .portfolio-item:hover .portfolio-overlay {
@@ -564,6 +565,10 @@
             opacity: 0.2;
         }
 
+        video {
+            pointer-events: none;
+          }
+
         
         </style>
 </head>
@@ -682,94 +687,64 @@
             </div>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
-                    <img src="https://source.unsplash.com/random/600x400/?ai,technology,1" alt="AI Project 1">
+                    <video class="speed2" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 1;">
+                        <source src="sentiment_analysis.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                     <div class="portfolio-overlay">
-                        <h3>Predictive Maintenance</h3>
-                        <p>Machine learning model to predict equipment failures before they occur.</p>
+                        <h3>Sentiment Analysis (NLP)</h3>
+                        <p>Simple web app using NLP techniques to perform sentimetn analysis on text.</p>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://source.unsplash.com/random/600x400/?data,analysis,1" alt="AI Project 2">
+                    <video class="speed2" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 1;">
+                        <source src="scraping.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                     <div class="portfolio-overlay">
-                        <h3>Customer Segmentation</h3>
-                        <p>Clustering algorithm to identify distinct customer groups for targeted marketing.</p>
+                        <h3>Web Scraping</h3>
+                        <p>Scraping thousands of reddit posts, to help visualise general feelings about certain topics</p>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://source.unsplash.com/random/600x400/?machine,learning,1" alt="AI Project 3">
+                    <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 1;">
+                        <source src="super_mario.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                     <div class="portfolio-overlay">
-                        <h3>Sentiment Analysis</h3>
-                        <p>NLP model to analyze customer feedback and social media sentiment.</p>
+                        <h3>Super Mario Solver (RL)</h3>
+                        <p>Raw pixel data used with Deep Reinforcement Learning techniques used to solve Super Mario Bros.</p>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://source.unsplash.com/random/600x400/?neural,network,1" alt="AI Project 4">
+                    <video class="speed2" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 1;">
+                        <source src="car_racing.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                     <div class="portfolio-overlay">
-                        <h3>Image Recognition</h3>
-                        <p>Computer vision system for quality control in manufacturing.</p>
+                        <h3>Car Racing</h3>
+                        <p>Raw pixel data used with Deep Reinforcement Learning techniques used to solve self driving task.</p>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://source.unsplash.com/random/600x400/?deep,learning,1" alt="AI Project 5">
+                    <img src="vis_aid.png" alt="AI Project 4">
                     <div class="portfolio-overlay">
-                        <h3>Fraud Detection</h3>
-                        <p>Anomaly detection system for identifying fraudulent transactions.</p>
+                        <h3>Scene Descriptor Mobile App</h3>
+                        <p>Used various ML models to help describe scenes for visually impaired people.</p>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://source.unsplash.com/random/600x400/?artificial,intelligence,1" alt="AI Project 6">
+                    <img src="pendulum.gif" alt="AI Project 5">
                     <div class="portfolio-overlay">
-                        <h3>Chatbot System</h3>
-                        <p>AI-powered customer support chatbot with natural language understanding.</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://source.unsplash.com/random/600x400/?data,science,1" alt="AI Project 7">
-                    <div class="portfolio-overlay">
-                        <h3>Recommendation Engine</h3>
-                        <p>Personalized content recommendation system for e-commerce.</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://source.unsplash.com/random/600x400/?big,data,1" alt="AI Project 8">
-                    <div class="portfolio-overlay">
-                        <h3>Demand Forecasting</h3>
-                        <p>Time series analysis to predict product demand and optimize inventory.</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://source.unsplash.com/random/600x400/?algorithm,1" alt="AI Project 9">
-                    <div class="portfolio-overlay">
-                        <h3>Autonomous Trading</h3>
-                        <p>Reinforcement learning system for algorithmic trading strategies.</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://source.unsplash.com/random/600x400/?computer,vision,1" alt="AI Project 10">
-                    <div class="portfolio-overlay">
-                        <h3>Medical Diagnosis</h3>
-                        <p>AI assistant for preliminary medical image analysis and diagnosis.</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://source.unsplash.com/random/600x400/?robotics,1" alt="AI Project 11">
-                    <div class="portfolio-overlay">
-                        <h3>Autonomous Navigation</h3>
-                        <p>Computer vision and path planning for robotic systems.</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://source.unsplash.com/random/600x400/?voice,recognition,1" alt="AI Project 12">
-                    <div class="portfolio-overlay">
-                        <h3>Voice Assistant</h3>
-                        <p>Custom voice-controlled interface for smart home automation.</p>
+                        <h3>Pendulum Simulator</h3>
+                        <p>RL agent learning how to balance a pendulum</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <section class="about" id="about">
+    <!-- <section class="about" id="about">
         <div class="container">
             <div class="section-title">
                 <h2>About Us</h2>
@@ -823,7 +798,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     
     <section class="contact" id="contact">
         <div class="container">
@@ -833,23 +808,23 @@
             <div class="contact-container">
                 <div class="contact-info">
                     <h3>Let's Discuss Your Project</h3>
-                    <p>Ready to leverage AI for your business? Contact us to schedule a consultation and discover how our solutions can drive your success.</p>
+                    <p>Ready to leverage AI for your business? Let's have a talk on how A.I solutions can drive your success.</p>
                     <div class="contact-details">
                         <div class="contact-detail">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>123 AI Street, Tech City, TC 10101</span>
-                        </div>
-                        <div class="contact-detail">
                             <i class="fas fa-phone"></i>
-                            <span>+1 (555) 123-4567</span>
+                            <span>+40 753390573</span>
                         </div>
                         <div class="contact-detail">
                             <i class="fas fa-envelope"></i>
-                            <span>info@aisolutions.example</span>
+                            <span>moga.olimpiu21@gmail.com</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fab fa-linkedin"></i>
+                            <a href ="https://www.linkedin.com/in/moga-olimpiu/" style="text-decoration: none; color: inherit;"><span>linkedin.com/in/moga-olimpiu/</span></a>
                         </div>
                     </div>
                 </div>
-                <div class="contact-form">
+                <!-- <div class="contact-form">
                     <form>
                         <div class="form-group">
                             <input type="text" placeholder="Your Name" required>
@@ -865,24 +840,36 @@
                         </div>
                         <button type="submit" class="btn">Send Message</button>
                     </form>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
     
     <footer>
         <div class="container">
-            <div class="social-links">
+            <!-- <div class="social-links">
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-linkedin"></i></a>
                 <a href="#"><i class="fab fa-github"></i></a>
                 <a href="#"><i class="fab fa-medium"></i></a>
-            </div>
+            </div> -->
             <p class="footer-text">&copy; 2023 AI Solutions. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                animate(); // start neural net canvas animation
+                type();    // start typing animation
+              }
+            });
+          }, { threshold: 0.3 });
+          
+          observer.observe(document.querySelector('.hero'));
+          
         // Theme Toggle Functionality
         // Theme Toggle Functionality
 const themeToggle = document.getElementById('themeToggle');
@@ -1126,6 +1113,7 @@ print(model)`
         
         animate();
 
+    document.querySelectorAll('.speed2').forEach(v => v.playbackRate = 2.0);    
 
     </script>
 </body>
